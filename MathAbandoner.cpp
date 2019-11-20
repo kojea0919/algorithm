@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <iostream>
 
 
 using namespace std;
@@ -18,7 +17,7 @@ bool cmp(const st_Info & info1, const st_Info & info2)
 	{
 		return false;
 	}
-	else if(info1.iRight > info2.iRight)
+	else if (info1.iRight > info2.iRight)
 	{
 		return true;
 	}
@@ -35,16 +34,7 @@ bool cmp(const st_Info & info1, const st_Info & info2)
 	}
 }
 
-int main()
-{
-	vector<int> answers;
-
-	answers.push_back(1);
-	answers.push_back(2);
-	answers.push_back(3);
-	answers.push_back(4);
-	answers.push_back(5);
-
+vector<int> solution(vector<int> answers) {
 	vector<int> answer;
 
 	st_Info Info[3];
@@ -81,14 +71,13 @@ int main()
 			++Info[2].iRight;
 		}
 
-		iIdx1 = (iIdx1 + 1) % 5;                     
+		iIdx1 = (iIdx1 + 1) % 5;
 		iIdx2 = (iIdx2 + 1) % 8;
 		iIdx3 = (iIdx3 + 1) % 10;
 	}
-	
+
 	//정렬
 	sort(Info, Info + 3, cmp);
-
 
 	//모두 같이 1등한 경우
 	if (Info[0].iRight == Info[1].iRight && Info[1].iRight == Info[2].iRight)
@@ -106,9 +95,7 @@ int main()
 	{
 		answer.push_back(Info[0].iNum);
 	}
-	//위에 부분은 차라리 max 뽑아서
-	//for문 돌면서 push하는게 좋을듯
 
-
-	return 0;
+	return answer;
 }
+
